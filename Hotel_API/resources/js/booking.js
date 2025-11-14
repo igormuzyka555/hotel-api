@@ -9,12 +9,21 @@ document.addEventListener("DOMContentLoaded", () => {
         result.textContent = "Отправка...";
         result.style.color = "#444";
 
+
+        //форматирование данных для MySQL 
+        const TimeIn = form.time_in.value;
+
+        let formattedTimeIn = null;
+        if (TimeIn){
+            formattedTimeIn = TimeIn.replace('T', ' ') + ':00';
+        }
+
         const body = {
             first_name: form.first_name.value,
             last_name: form.last_name.value,
             birth: Number(form.birth.value),
             email: form.email.value,
-            time_in: form.time_in.value,
+            time_in: formattedTimeIn,
             days: Number(form.days.value),
         };
 

@@ -16,8 +16,4 @@ Route::get('/booking-form', function () {
 Route::post('/booking-form-submit', [BookingController::class, 'store'])
     ->name('booking.form.store');
 
-// API для n8n, С api_key
-Route::prefix('api')->middleware('api_key')->group(function () {
-    Route::get('/bookings', [BookingController::class, 'index']);
-    Route::post('/bookings', [BookingController::class, 'store']);
-});
+    

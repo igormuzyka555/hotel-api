@@ -36,7 +36,7 @@
 
         <div class="form-group">
             <label>Время заезда</label>
-            <input name="time_in" placeholder="2025-11-20 14:00:00" required>
+            <input type="datetime-local" name="time_in" required>
         </div>
 
         <div class="form-group">

@@ -6,13 +6,17 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+
+// API для Авторизации по типу "Bearer API_KEY" n8n
+// и по адрессу ?api_key=API_KEY
 class ApiKeyMiddleware
 {
     public function handle(Request $request, Closure $next)
     {
+        //Ключ API в .env в корне
         $envKey = env('API_KEY');
 
-        // 1) Authorization: Bearer KEY
+        // 1) Авторизация: Bearer KEY
         $header = $request->header('Authorization');
         $fromHeader = null;
 
