@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
         try {
-            const response = await fetch('/api/bookings', {
+            const response = await fetch('/booking-form-submit', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

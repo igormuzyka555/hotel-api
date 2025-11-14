@@ -7,10 +7,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// страница с формой (GET)
+Route::get('/booking-form', function () {
+    return view('booking-form');
+});
 
-Route::view('/booking-form', 'booking-form'); //форма заполнения
- //API маршруты 
-Route::prefix('api')->middleware('api_key')->group(function ()  {
-    Route::get('/bookings', [BookingController::class, 'index']);  // Получить все записи
-    Route::post('/bookings', [BookingController::class, 'store']); // Создать новую
+// обработка формы (POST, БЕЗ api_key)
+Route::post('/booking-form-submit', [BookingController::class, 'store'])
+    ->name('booking.form.store');
+
+// API для n8n, С api_key
+Route::prefix('api')->middleware('api_key')->group(function () {
+    Route::get('/bookings', [BookingController::class, 'index']);
+    Route::post('/bookings', [BookingController::class, 'store']);
 });
