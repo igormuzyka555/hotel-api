@@ -1,0 +1,126 @@
+{
+  "name": "Проверка API",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://host.docker.internal:8000/api/bookings",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "api_key",
+              "value": "34247999464565567295723495732495"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "first_name",
+              "value": "Игорь"
+            },
+            {
+              "name": "last_name",
+              "value": "Музыка"
+            },
+            {
+              "name": "birth",
+              "value": "2000"
+            },
+            {
+              "name": "email",
+              "value": "igor@test.com"
+            },
+            {
+              "name": "time_in",
+              "value": "2025-11-20 14:00:00"
+            },
+            {
+              "name": "days",
+              "value": "3"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        -272,
+        112
+      ],
+      "id": "234b6a77-8a38-464f-bd12-034af3234195",
+      "name": "POST запрос"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -656,
+        -32
+      ],
+      "id": "ae753d0c-47c2-482f-a8cd-1eef770ff0fa",
+      "name": "Нажми Старт"
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8000/api/bookings",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "api_key",
+              "value": "34247999464565567295723495732495"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        -272,
+        -80
+      ],
+      "id": "e0be3871-ccf7-4040-80b2-ef3f70ce66ae",
+      "name": "GET запрос"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "POST запрос": {
+      "main": [
+        []
+      ]
+    },
+    "Нажми Старт": {
+      "main": [
+        [
+          {
+            "node": "POST запрос",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "GET запрос",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "8da039f3-7d41-48f4-8900-98f8368fc32d",
+  "meta": {
+    "instanceId": "1b81e1e0f8b8a3f6a244aef9f40c057ab50618e2d58da38a277312d7da6823b6"
+  },
+  "id": "5hn9s0y5bGTaWBks",
+  "tags": []
+}
