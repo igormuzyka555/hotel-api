@@ -114,7 +114,7 @@ http://127.0.0.1:8000/api/bookings?api_key=34247999464565567295723495732495
 ### API POST пример:
 
 ```bash
-curl -X POST "http://host.docker.internal:8000/api/bookings?api_key=34247999464565567295723495732495" \
+curl -X POST "http://127.0.0.1:8000/api/bookings?api_key=34247999464565567295723495732495" \
   -H "Content-Type: application/json" \
   -d '{
     "first_name": "Дима",
