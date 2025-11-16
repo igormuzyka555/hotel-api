@@ -34,9 +34,8 @@ https://getcomposer.org/download/
 ## 📥 3. Скачать проект
 
 ```bash
-cd C:\Users\user\Desktop
 git clone https://github.com/igormuzyka555/hotel-api.git
-cd hotel-api/Hotel_API
+cd hotel-api/hotel_API & cd Hotel_API
 ```
 ---
 
@@ -115,15 +114,15 @@ http://127.0.0.1:8000/api/bookings?api_key=34247999464565567295723495732495
 ### API POST пример:
 
 ```bash
-curl -X POST "http://host.docker.internal:8000/api/bookings?api_key=34247999464565567295723495732495" \
+curl -X POST "http://127.0.0.1:8000/api/bookings?api_key=34247999464565567295723495732495" \
   -H "Content-Type: application/json" \
   -d '{
-    "first_name": "Игорь",
-    "last_name": "Музыка",
-    "birth": 2000,
-    "email": "igor@test.com",
+    "first_name": "Дима",
+    "last_name": "Стрелков",
+    "birth": 1998,
+    "email": "dmitri@test.com",
     "time_in": "2025-11-20 14:00:00",
-    "days": 3
+    "days": 6
   }'
 
 ```
@@ -142,7 +141,7 @@ http://localhost/phpmyadmin
 
 Я в папку добавил Workflow проекта для наглядности, файл "Проверка API.json"
 
-n8n Запускать в Dokcer (лучше через Dokcer Desktop )
+n8n Запускать в Docker (лучше через Docker Desktop )
 
 ```bash
 docker volume create n8n_data
