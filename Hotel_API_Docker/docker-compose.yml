@@ -1,0 +1,49 @@
+version: "3.9"
+
+services:
+  app:
+    build: .igor123/hotel_api:latest  # в случае если не работает, убрать и собрать без моего образа
+    container_name: laravel-app
+    working_dir: /var/www/html
+    volumes:
+      - ./:/var/www/html
+    depends_on:
+      - db
+    networks:
+      - laravel
+
+  web:
+    image: nginx:1.27-alpine
+    container_name: laravel-nginx
+    ports:
+      - "8000:80" # сайт будет доступен на http://localhost:8000
+    volumes:
+      - ./:/var/www/html
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - app
+    networks:
+      - laravel
+
+  db:
+    image: mysql:8.0
+    container_name: laravel-db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: hotel_api
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: laravel
+    ports:
+      - "3307:3306" # чтобы не драться с XAMPP'ом
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - laravel
+
+networks:
+  laravel:
+    driver: bridge
+
+volumes:
+  db_data:
